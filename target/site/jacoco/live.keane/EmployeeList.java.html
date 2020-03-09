@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EmployeeList.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">employee</a> &gt; <a href="index.source.html" class="el_package">live.keane</a> &gt; <span class="el_source">EmployeeList.java</span></div><h1>EmployeeList.java</h1><pre class="source lang-java linenums">package live.keane;
+
+import java.util.ArrayList;
+
+public class EmployeeList {
+    private ArrayList&lt;Employee&gt; employees;
+
+<span class="fc" id="L8">    public EmployeeList() {</span>
+<span class="fc" id="L9">        this.employees = new ArrayList&lt;Employee&gt;();</span>
+<span class="fc" id="L10">    }</span>
+
+    public boolean addEmployee(Employee emp)
+    {
+        // check if number exists, throw exception
+<span class="fc bfc" id="L15" title="All 2 branches covered.">        for (int i = 0; i &lt; employees.size(); i++) {</span>
+<span class="fc" id="L16">            Employee currentEmployee = employees.get(i);</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">            if (currentEmployee.getEmployeeNumber().equals(emp.getEmployeeNumber())) {</span>
+<span class="fc" id="L18">                throw new IllegalArgumentException(&quot;Duplicate Employee details found, no object added&quot;);</span>
+            }
+        }
+
+<span class="fc" id="L22">        employees.add(emp);</span>
+<span class="fc" id="L23">        return true;</span>
+    }
+
+    public String deleteEmployee(String employeeNumber)
+    {
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        for (int i = 0; i &lt; employees.size(); i++) {</span>
+<span class="fc" id="L29">            Employee currentEmployee = employees.get(i);</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">            if (currentEmployee.getEmployeeNumber().equals(employeeNumber)) {</span>
+<span class="fc" id="L31">                employees.remove(i);</span>
+<span class="fc" id="L32">                return &quot;Employee deleted from the list&quot;;</span>
+            }
+        }
+
+<span class="fc" id="L36">        return &quot;No matching Employee found&quot;;</span>
+    }
+
+    public int getListSize()
+    {
+<span class="fc" id="L41">        return employees.size();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

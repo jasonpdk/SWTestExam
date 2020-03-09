@@ -45,7 +45,7 @@ public class EmployeeListTest {
     public void testDeleteEmployeeSuccess()
     {
         employeeList.addEmployee(employee); // add first employee
-        assertEquals(employeeList.deleteEmployee(employee.getEmployeeNumber()), "Employee deleted from the list");
+        assertEquals("Employee deleted from the list", employeeList.deleteEmployee(employee.getEmployeeNumber()));
         assertEquals(employeeList.getListSize(), 0);
     }
 
@@ -59,7 +59,7 @@ public class EmployeeListTest {
         employee.setName("Jason Keane");
         employee.setEmployeeNumber("54674");
 
-        assertEquals(employeeList.deleteEmployee(employee2.getEmployeeNumber()), "No matching Employee found");
+        assertEquals("No matching Employee found", employeeList.deleteEmployee(employee2.getEmployeeNumber()));
         assertEquals(employeeList.getListSize(), 1);
     }
 
@@ -73,6 +73,6 @@ public class EmployeeListTest {
         employee.setEmployeeNumber("54674");
         employeeList.addEmployee(employee2);
 
-        assertEquals(employeeList.getListSize(), 2);
+        assertEquals(2, employeeList.getListSize());
     }
 }

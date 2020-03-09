@@ -22,7 +22,7 @@ public class EmployeeTest {
     public void testSetNameSuccess()
     {
         employee.setName("Jason Keane");
-        assertEquals(employee.getName(), "Jason Keane");
+        assertEquals("Jason Keane", employee.getName());
     }
 
     @Test
@@ -32,14 +32,14 @@ public class EmployeeTest {
             employee.setName("A");
         });
 
-        assertEquals(ex.getMessage(), "Name too short");
+        assertEquals("Name too short", ex.getMessage());
     }
 
     @Test
     public void testSetEmployeeNumberSuccess()
     {
         employee.setEmployeeNumber("12345");
-        assertEquals(employee.getEmployeeNumber(), "12345");
+        assertEquals("12345", employee.getEmployeeNumber());
     }
 
     @Test
@@ -49,12 +49,12 @@ public class EmployeeTest {
             employee.setEmployeeNumber("1"); // < 5 digits
         });
 
-        assertEquals(ex.getMessage(), "Employee number must be 5 digits");
+        assertEquals("Employee number must be 5 digits", ex.getMessage());
 
         ex = assertThrows(IllegalArgumentException.class, () -> {
             employee.setEmployeeNumber("12345678"); // > 5 digits
         });
 
-        assertEquals(ex.getMessage(), "Employee number must be 5 digits");
+        assertEquals("Employee number must be 5 digits", ex.getMessage());
     }
 }
